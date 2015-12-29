@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/myrelativelayout"
+
+    tools:context=".MainActivity"
+    android:background="@drawable/backgroundstyle">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:clickable="true">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar_actionbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@drawable/toolbar"
+            android:elevation="4dp"
+            android:title="@string/app_name"
+            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+            android:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
+      <!--  <Toolbar
+            android:id="@+id/toolbar_top"
+            android:minHeight="?android:attr/actionBarSize"
+            android:background="@drawable/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        -->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:clickable="false"
+            android:layout_gravity="top"
+            android:id="@+id/ll1">
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:baselineAligned="false"
+            android:textAlignment="center"
+            android:measureWithLargestChild="false"
+            android:gravity="center"
+            android:clickable="false"
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/ll10" >
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Options"
+                android:layout_column="6"
+                android:id="@+id/optionsbtn2" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Play Again"
+                android:layout_column="8"
+                android:id="@+id/playagain" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:clickable="false"
+            android:layout_gravity="top"
+            android:id="@+id/ll12">
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:textAlignment="center"
+            android:measureWithLargestChild="false"
+            android:gravity="center"
+            android:id="@+id/ll2">
+
+            <ImageButton
+                android:id="@+id/button8"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:shadowColor="#FF008080"
+                android:shadowDx="0"
+                android:shadowDy="0"
+                android:shadowRadius="5"
+
+                android:layout_column="6"
+
+                android:layout_gravity="top"
+                android:scaleType="centerCrop"
+                android:adjustViewBounds="true"
+                android:background="@drawable/grey" />
+            <!--
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/button8"
+                android:layout_column="6" />
+            -->
+            <ImageButton
+
+                android:id="@+id/button9"
+                android:layout_column="8"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@drawable/grey"
+                android:shadowColor="#FF008080"
+                android:shadowDx="0"
+                android:shadowDy="0"
+                android:shadowRadius="5"
+                />
+
+            <ImageButton
+                android:id="@+id/button2"
+                android:layout_column="10"
+
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@drawable/grey"
+                android:shadowColor="#FF008080"
+                android:shadowDx="0"
+                android:shadowDy="0"
+                android:shadowRadius="5"
+
+
+
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:id="@+id/ll3">
+
+            <ImageButton
+
+                android:id="@+id/button7"
+                android:layout_column="6"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@drawable/grey"
+                android:shadowColor="#FF008080"
+                android:shadowDx="0"
+                android:shadowDy="0"
+                android:shadowRadius="5"
+                android:padding="2px" />
+
+            <ImageButton
+
+                android:id="@+id/button1"
+                android:layout_column="8"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@drawable/grey"
+                android:shadowColor="#FF008080"
+                android:shadowDx="0"
+                android:shadowDy="0"
+                android:shadowRadius="5"
+                android:padding="2px" />
+
+            <ImageButton
+
+                android:id="@+id/button3"
+                android:layout_column="10"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@drawable/grey"
+                android:shadowColor="#FF008080"
+                android:shadowDx="0"
+                android:shadowDy="0"
+                android:shadowRadius="5"
+                />
+            </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:id="@+id/ll4">
+
+            <ImageButton
+
+                android:id="@+id/button6"
+                android:layout_column="6"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@drawable/grey"
+                android:shadowColor="#FF008080"
+                android:shadowDx="0"
+                android:shadowDy="0"
+                android:shadowRadius="5"
+                android:clickable="false"
+                android:contentDescription="6" />
+
+            <ImageButton
+
+                android:id="@+id/button5"
+                android:layout_column="8"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@drawable/grey"
+                android:shadowColor="#FF008080"
+                android:shadowDx="0"
+                android:shadowDy="0"
+                android:shadowRadius="5"
+                android:contentDescription="5" />
+
+            <ImageButton
+
+                android:id="@+id/button4"
+                android:layout_column="10"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@drawable/grey"
+                android:shadowColor="#FF008080"
+                android:shadowDx="0"
+                android:shadowDy="0"
+                android:shadowRadius="5"
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:clickable="false"
+            android:id="@+id/ll5"
+            android:layout_weight="2"
+            android:gravity="center|bottom"
+            android:showDividers="beginning"
+            android:textAlignment="center"
+            android:layout_gravity="bottom">
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/tblScores">
+
+                <TableRow
+                    android:id="@+id/scoresRowLbl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dip" >
+
+                    <TextView
+                        android:id="@+id/scoresTxtLbl"
+                        android:text="Scores : "
+                        android:layout_span="4"
+                        android:textAppearance="@android:style/TextAppearance.Medium" />
+
+
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dip" >
+
+                    <TextView
+                        android:id="@+id/player1Lbl"
+                        android:text="Player1: "
+                        android:textAppearance="@android:style/TextAppearance.Medium"
+                        android:singleLine="true"
+                        android:layout_width="match_parent"
+                        android:gravity="left" />
+
+                    <TextView
+                        android:id="@+id/player1score"
+                        android:textAppearance="@android:style/TextAppearance.Medium"
+                        android:layout_width="50dp" />
+                    <TextView
+                        android:id="@+id/noofstepsLbl"
+                        android:text="Steps taken: "
+                        android:textAppearance="@android:style/TextAppearance.Medium"
+                        android:gravity="right"
+                        android:singleLine="true" />
+
+                    <TextView
+                        android:id="@+id/noofstepsval"
+                        android:textAppearance="@android:style/TextAppearance.Medium" />
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dip" >
+
+                    <TextView
+                        android:id="@+id/player2Lbl"
+                        android:text="Player2: "
+                        android:textAppearance="@android:style/TextAppearance.Medium" />
+
+                    <TextView
+                        android:id="@+id/player2score"
+                        android:layout_span="3"
+                        android:textAppearance="@android:style/TextAppearance.Medium" />
+
+                </TableRow>
+
+            </TableLayout>
+
+            <TextView android:id="@+id/toasttext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#FFF"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

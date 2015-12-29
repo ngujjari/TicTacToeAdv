@@ -1,0 +1,35 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="TicTacAppTheme" parent="Theme.AppCompat.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="ComplexityButtonStyleSmall" parent="Widget.AppCompat.Button.Small" >
+        <!-- Customizations
+        <item name="android:minHeight">5dp</item>  -->
+        <item name="android:minHeight">8dip</item>
+    </style>
+
+    <style name="SuccessAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog">
+        <!-- Used for the buttons
+        <item name="colorAccent">#FFcd1628</item>-->
+        <!-- Used for the title and text
+        <item name="android:textColorPrimary">#FFFFFF</item>-->
+        <!-- Used for the background -->
+        <item name="android:background">#FFFFFFFF</item>
+        <item name="android:dialogMessage">@style/MyTitleTextStyle</item>
+
+    </style>
+
+    <style name="MyTitleTextStyle">
+        <item name="android:textColor">#FFFFFFFF</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Title</item>
+    </style>
+    <style name="dialog" parent="Base.Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorAccent">#FFcd1628</item>
+    </style>
+
+</resources>

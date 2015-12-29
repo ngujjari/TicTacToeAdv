@@ -1,0 +1,178 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context=".SettingsActivity"
+    android:background="@drawable/backgroundstyle">
+<!--
+    <Toolbar
+
+        android:id="@+id/toolbar_top"
+        android:minHeight="?android:attr/actionBarSize"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+-->
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
+        android:text="Single Player"
+        android:id="@+id/singlePlyTextView" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/singleplaycheckBox"
+        android:singleLine="true"
+        android:layout_marginTop="15dp"
+        android:layout_toRightOf="@+id/singlePlyTextView"
+        android:layout_alignStart="@id/highbutton"
+        android:layout_alignLeft="@id/highbutton"
+        android:layout_toEndOf="@id/highbutton"
+        android:layout_alignParentLeft="false"
+        android:layout_alignParentRight="false" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/singlePlyTextView"
+        android:text="Two Player"
+        android:id="@+id/twoplayertextView" />
+
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/twoplaycheckBox"
+        android:layout_alignStart="@id/highbutton"
+        android:layout_alignLeft="@id/highbutton"
+        android:layout_toRightOf="@+id/twoplayertextView"
+        android:layout_below="@+id/singleplaycheckBox" />
+
+
+    <TextView
+        android:id="@+id/textView_player1_lbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/twoplayertextView"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
+        android:text="Name" />
+
+    <EditText
+        android:id="@+id/editText_player1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/textView_player1_lbl"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="5dp"
+        android:inputType="text"
+        android:ems="10" >
+
+    </EditText>
+
+    <TextView
+        android:id="@+id/textView_player2_lbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/editText_player1"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
+        android:text="Opponent Name" />
+
+    <EditText
+        android:id="@+id/editText_player2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/textView_player2_lbl"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="5dp"
+        android:inputType="text"
+        android:ems="10" >
+
+    </EditText>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
+        android:text="Complexity"
+        android:layout_below="@+id/editText_player2"
+        android:id="@+id/complexityTextView" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Low"
+        android:id="@+id/lowbutton"
+        android:layout_below="@+id/complexityTextView"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="20dp"
+        android:textColor="#ffffff"
+        android:background="#ff2e80"
+        android:clickable="true"
+        android:padding="1dp"
+        android:singleLine="true"
+        android:gravity="center" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mid"
+        android:id="@+id/midbutton"
+        android:layout_alignParentStart="false"
+        android:textColor="#ffffff"
+        android:clickable="true"
+        android:padding="1dp"
+        android:singleLine="true"
+        android:gravity="center"
+        android:layout_toRightOf="@+id/lowbutton"
+        android:layout_alignBottom="@+id/lowbutton"
+        android:layout_marginLeft="30dp" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="High"
+        android:id="@+id/highbutton"
+        android:layout_alignParentStart="false"
+        android:textColor="#ffffff"
+        android:clickable="true"
+        android:padding="1dp"
+        android:singleLine="true"
+        android:gravity="center"
+        android:layout_toRightOf="@+id/midbutton"
+        android:layout_alignBottom="@+id/midbutton"
+        android:layout_marginLeft="30dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start Game"
+        android:id="@+id/startgamebtn"
+        android:layout_below="@+id/midbutton"
+        android:layout_alignEnd="@+id/highbutton"
+        android:layout_marginTop="30dp"
+        android:focusable="true"
+        android:foregroundGravity="top"
+        android:gravity="center_vertical" />
+
+
+</RelativeLayout>

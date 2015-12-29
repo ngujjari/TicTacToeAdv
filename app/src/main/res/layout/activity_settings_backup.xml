@@ -1,0 +1,231 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SettingsActivity"
+    android:background="@drawable/backgroundstyle">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_actionbar_settingspage"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@drawable/toolbar"
+        android:elevation="4dp"
+        android:title="@string/app_name"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        android:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="false"
+        android:id="@+id/ll11"
+        android:gravity="left|top"
+        android:layout_gravity="bottom"
+        android:layout_alignParentBottom="false"
+        android:layout_alignParentTop="false"
+        android:layout_alignWithParentIfMissing="false"
+        android:layout_below="@+id/toolbar_actionbar_settingspage">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="false"
+        android:id="@+id/llv4"
+        android:layout_weight="1"
+        android:gravity="bottom|left"
+        android:textAlignment="center"
+        android:layout_gravity="left|top">
+
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dip"
+        android:text="Single Player"
+        android:id="@+id/singlePlyTextView"
+        android:layout_weight="1" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/singleplaycheckBox"
+        android:singleLine="true"
+        android:layout_alignParentLeft="false"
+        android:layout_alignParentRight="false"
+        android:layout_weight="1"
+        android:layout_marginTop="15dip"
+        android:checked="true" />
+</LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="false"
+        android:id="@+id/llv5"
+        android:layout_weight="1"
+        android:gravity="bottom|left"
+        android:textAlignment="center"
+        android:layout_gravity="bottom">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="20dp"
+        android:text="Two Player    "
+        android:id="@+id/twoplayertextView"
+        android:layout_weight="1" />
+
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/twoplaycheckBox"
+        android:layout_weight="1" />
+</LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView_player1_lbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
+        android:text="Name"
+        android:layout_below="@+id/ll11" />
+
+    <EditText
+        android:id="@+id/editText_player1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/textView_player1_lbl"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="5dp"
+        android:inputType="text"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+        android:ems="10" >
+
+    </EditText>
+
+    <TextView
+        android:id="@+id/textView_player2_lbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/editText_player1"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
+        android:text="Opponent Name" />
+
+    <EditText
+        android:id="@+id/editText_player2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/textView_player2_lbl"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="5dp"
+        android:inputType="text"
+        android:ems="10" >
+
+    </EditText>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
+        android:text="Complexity"
+        android:layout_below="@+id/editText_player2"
+        android:id="@+id/complexityTextView" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="false"
+        android:id="@+id/ll1"
+        android:gravity="center|top"
+        android:layout_gravity="bottom"
+        android:layout_alignParentBottom="false"
+        android:layout_alignParentTop="false"
+        android:layout_alignWithParentIfMissing="false"
+        android:layout_centerHorizontal="true"
+        android:showDividers="beginning|middle|end"
+        android:layout_below="@+id/complexityTextView">
+
+    <Button
+        style="@style/ComplexityButtonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Low"
+        android:id="@+id/lowbutton"
+        android:layout_alignParentStart="false"
+        android:layout_alignParentLeft="false"
+        android:layout_marginLeft="20dp"
+        android:textColor="#ffffff"
+        android:clickable="true"
+        android:singleLine="true"
+        android:gravity="center"
+        android:layout_gravity="center_horizontal" />
+
+    <Button
+        style="@style/ComplexityButtonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mid"
+        android:id="@+id/midbutton"
+        android:layout_alignParentStart="false"
+        android:layout_alignParentLeft="false"
+        android:textColor="#ffffff"
+        android:clickable="true"
+        android:singleLine="true"
+        android:gravity="center"
+        android:layout_marginLeft="30dp" />
+
+    <Button
+        style="@style/ComplexityButtonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="High"
+        android:id="@+id/highbutton"
+        android:layout_alignParentStart="false"
+        android:layout_alignParentLeft="false"
+        android:textColor="#ffffff"
+        android:clickable="true"
+        android:singleLine="true"
+        android:gravity="center"
+        android:layout_marginLeft="30dp" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="false"
+        android:id="@+id/llh5"
+        android:layout_weight="1"
+        android:textAlignment="center"
+        android:layout_gravity="bottom"
+        android:layout_below="@+id/ll1"
+        android:gravity="center">
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start Game"
+        android:id="@+id/startgamebtn"
+
+        android:focusable="true"
+        android:foregroundGravity="top"
+        android:gravity="center_vertical"
+         />
+
+    </LinearLayout>
+
+</RelativeLayout>
