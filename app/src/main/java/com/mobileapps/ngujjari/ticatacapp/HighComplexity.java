@@ -50,7 +50,7 @@ public class HighComplexity extends TicTacAbstractController{
     {
         ActionTakenBean playerAction = new ActionTakenBean(player, null, null);
         setBoard();
-        bd.uptoDepth=5;
+        bd.uptoDepth=4;
         bd.alphaBetaMinimax(Integer.MIN_VALUE, Integer.MAX_VALUE, 0, 1);
         Move mv = bd.returnBestMove();
         Point fromPt = mv.getFromPt();

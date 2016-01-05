@@ -46,7 +46,7 @@ public class LowComplexity extends TicTacAbstractController{
         }
     }
 
-    @Override
+   /* @Override
     public ActionTakenBean predictUserinput(String player)
     {
         ActionTakenBean playerAction = new ActionTakenBean(player, null, null);
@@ -66,6 +66,36 @@ public class LowComplexity extends TicTacAbstractController{
     public int predictUserinput(String inputType, String player) {
         setBoard();
         bd.uptoDepth=1;
+        bd.alphaBetaMinimax(Integer.MIN_VALUE, Integer.MAX_VALUE, 0, 1);
+        //bd.displayBoard();
+        for (PointsAndScores pas : bd.rootsChildrenScore)
+            Log.v(TAG, "Move: " + pas.getMove() + " Score: " + pas.getScore());
+        Move mv = bd.returnBestMove();
+        // Point fromPt = mv.getFromPt();
+        Point toPt = mv.getToPt();
+        return toPt.getNode();
+    }*/
+
+    @Override
+    public ActionTakenBean predictUserinput(String player)  // Drag Drop
+    {
+        ActionTakenBean playerAction = new ActionTakenBean(player, null, null);
+        /*setBoard();
+        bd.uptoDepth=1;
+        bd.alphaBetaMinimax(Integer.MIN_VALUE, Integer.MAX_VALUE, 0, 1);
+        Move mv = bd.returnBestMove();
+        Point fromPt = mv.getFromPt();
+        Point toPt = mv.getToPt();*/
+        playerAction = super.getNextStep(player);
+
+        log(TAG, "Return playerAction == " + playerAction);
+        return playerAction;
+    }
+
+    @Override
+    public int predictUserinput(String inputType, String player) {  // Single Input
+        setBoard();
+        bd.uptoDepth=4;
         bd.alphaBetaMinimax(Integer.MIN_VALUE, Integer.MAX_VALUE, 0, 1);
         //bd.displayBoard();
         for (PointsAndScores pas : bd.rootsChildrenScore)

@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="TicTacAppTheme" parent="Theme.AppCompat.NoActionBar">
+    <style name="TicTacAppTheme" parent="Base.V7.Theme.AppCompat">
         <!-- Customize your theme here. -->
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
@@ -9,7 +9,8 @@
 
     <style name="ComplexityButtonStyleSmall" parent="Widget.AppCompat.Button.Small" >
         <!-- Customizations
-        <item name="android:minHeight">5dp</item>  -->
+        <item name="android:minHeight">5dp</item>
+        <item name="android:background">@drawable/buttoncomplexity</item> -->
         <item name="android:minHeight">8dip</item>
     </style>
 

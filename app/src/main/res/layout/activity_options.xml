@@ -12,7 +12,18 @@
         android:elevation="4dp"
         android:title="@string/app_name"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        android:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+        android:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tic Tac Toe"
+            android:layout_gravity="center"
+            android:id="@+id/toolbar_title"
+            android:fontFamily="sans-serif-medium"
+            android:textSize="@dimen/toolbar_text_size"
+            android:gravity="center_horizontal"
+            android:textColor="#FFFFFF" />
+    </android.support.v7.widget.Toolbar>
 
     <LinearLayout
         android:orientation="vertical"
@@ -25,7 +36,8 @@
         android:layout_alignParentBottom="false"
         android:layout_alignParentTop="false"
         android:layout_alignWithParentIfMissing="false"
-        android:layout_below="@+id/toolbar_actionbar_settingspage">
+        android:layout_below="@+id/toolbar_actionbar_settingspage"
+        android:layout_marginTop="20dip">
 
         <LinearLayout
             android:orientation="horizontal"
@@ -46,7 +58,9 @@
                 android:layout_marginTop="15dip"
                 android:text="Single Player"
                 android:id="@+id/singlePlyTextView"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                android:textColor="#FFFFFF" />
 
             <CheckBox
                 android:layout_width="wrap_content"
@@ -78,7 +92,8 @@
                 android:layout_marginLeft="20dp"
                 android:text="Two Player    "
                 android:id="@+id/twoplayertextView"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:textColor="#FFFFFF" />
 
 
             <CheckBox
@@ -86,7 +101,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/twoplaycheckBox"
                 android:layout_weight="1"
-                />
+                android:background="#143e77" />
         </LinearLayout>
     </LinearLayout>
 
@@ -97,8 +112,9 @@
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="15dp"
-        android:text="Name"
-        android:layout_below="@+id/ll11" />
+        android:text="Your Name"
+        android:layout_below="@+id/ll11"
+        android:textColor="#FFFFFF" />
 
     <EditText
         android:id="@+id/editText_player1"
@@ -110,8 +126,9 @@
         android:layout_marginRight="15dp"
         android:layout_marginTop="5dp"
         android:inputType="text"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-        android:ems="10" >
+        android:ems="10"
+        android:maxLength="7"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Small">
 
     </EditText>
 
@@ -123,7 +140,8 @@
         android:layout_below="@+id/editText_player1"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="15dp"
-        android:text="Opponent Name" />
+        android:text="Opponent Name"
+        android:textColor="#FFFFFF" />
 
     <EditText
         android:id="@+id/editText_player2"
@@ -136,6 +154,7 @@
         android:layout_marginTop="5dp"
         android:inputType="text"
         android:ems="10"
+        android:maxLength="7"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Small">
 
     </EditText>
@@ -147,7 +166,8 @@
         android:layout_marginTop="15dp"
         android:text="Complexity"
         android:layout_below="@+id/editText_player2"
-        android:id="@+id/complexityTextView" />
+        android:id="@+id/complexityTextView"
+        android:textColor="#FFFFFF" />
 
     <LinearLayout
         android:orientation="horizontal"
@@ -165,7 +185,6 @@
         android:layout_below="@+id/complexityTextView">
 
         <Button
-            style="@style/ComplexityButtonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Low"
@@ -177,10 +196,10 @@
             android:clickable="true"
             android:singleLine="true"
             android:gravity="center"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            style="@style/ComplexityButtonStyleSmall" />
 
         <Button
-            style="@style/ComplexityButtonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Mid"
@@ -191,10 +210,10 @@
             android:clickable="true"
             android:singleLine="true"
             android:gravity="center"
-            android:layout_marginLeft="20dp" />
+            android:layout_marginLeft="20dp"
+            style="@style/ComplexityButtonStyleSmall" />
 
         <Button
-            style="@style/ComplexityButtonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="High"
@@ -205,9 +224,68 @@
             android:clickable="true"
             android:singleLine="true"
             android:gravity="center"
-            android:layout_marginLeft="20dp" />
+            android:layout_marginLeft="20dp"
+            style="@style/ComplexityButtonStyleSmall" />
 
     </LinearLayout>
+<!--
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="false"
+        android:id="@+id/ll110"
+        android:layout_gravity="bottom"
+        android:layout_below="@+id/ll1">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="false"
+        android:id="@+id/llv81"
+        android:layout_weight="1"
+        android:gravity="bottom|left"
+        android:textAlignment="center"
+        android:layout_gravity="bottom">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="Reset Scores"
+            android:layout_below="@+id/ll1"
+            android:id="@+id/resetscorelbl"
+            android:layout_weight="1" />
+        </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="false"
+        android:id="@+id/llv82"
+        android:layout_weight="1"
+        android:textAlignment="center"
+        android:layout_gravity="bottom">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Clear"
+            android:id="@+id/clearscoresbtn"
+
+            android:focusable="false"
+            android:background="@drawable/buttoncomplexity_noselect"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+            android:layout_gravity="left"
+            style="@style/ComplexityButtonStyleSmall" />
+
+</LinearLayout>
+    </LinearLayout>  -->
+
+
+
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -219,6 +297,7 @@
         android:layout_gravity="bottom"
         android:layout_below="@+id/ll1"
         android:gravity="center">
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="30dip"
@@ -226,23 +305,28 @@
             android:id="@+id/clearscoresbtn"
 
             android:focusable="false"
-            android:foregroundGravity="top"
-            android:background="@drawable/startbutton"
+            android:background="@drawable/buttonclearscores"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-            android:layout_gravity="center_vertical" />
+            android:paddingLeft="10dip"
+            android:paddingTop="5dip"
+            android:paddingRight="10dip"
+            android:paddingBottom="5dip"
+            android:textColor="#ffffff" />
+
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="30dip"
-            android:text="Start Game"
+            android:text="Enter"
             android:id="@+id/startgamebtn"
 
             android:focusable="false"
-            android:foregroundGravity="top"
             android:background="@drawable/startbutton"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="20dip" />
+            android:layout_marginLeft="30dip"
+            android:paddingLeft="10dip"
+            android:paddingRight="10dip"
+            android:paddingTop="5dip"
+            android:paddingBottom="5dip" />
 
     </LinearLayout>
 

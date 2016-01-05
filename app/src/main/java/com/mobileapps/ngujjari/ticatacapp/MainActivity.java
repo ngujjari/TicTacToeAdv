@@ -22,6 +22,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
+import android.view.SoundEffectConstants;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
@@ -34,6 +35,9 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -87,12 +91,18 @@ public class MainActivity extends AppCompatActivity implements Animation.Animati
     private boolean highLevel = true;
     private ActionBar topToolBar;
 
+    private Tracker mTracker;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_home);
         SharedPreferences savedData = getSharedPreferences(SettingsActivity.PREFS_NAME, 0);
-        setToolBar();
+       // setToolBar();
+
+        TicTacToeApp application = (TicTacToeApp) getApplication();
+        mTracker = application.getDefaultTracker();
+
         Intent intent = getIntent();
         boolean singlePlayerChecked = intent.getBooleanExtra("singlePlayerChecked", false); //if it's a string you stored.
         boolean twoPlayerChecked = intent.getBooleanExtra("twoPlayerChecked", false);
@@ -315,7 +325,7 @@ public class MainActivity extends AppCompatActivity implements Animation.Animati
     public void setToolBar()
     {
           Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar_actionbar);
-          myToolbar.setTitle("Tic Tac Toe - Advanced");
+          myToolbar.setTitle("Tic Tac Toe - Advanced"); // -- Ultimate or advanced
           setSupportActionBar(myToolbar);
 
     }
@@ -344,7 +354,7 @@ public class MainActivity extends AppCompatActivity implements Animation.Animati
     private final class OptionsClickListener implements View.OnClickListener {
 
         public void onClick(View v) {
-
+            v.playSoundEffect(SoundEffectConstants.CLICK);
             Log.v(TAG, "OptionsClickListener onclick Begin : " + v.getId() + ", complexity= " + complexity);
             toastText.clearAnimation();
             TicTacToeApp app = (TicTacToeApp) getApplication();
@@ -381,6 +391,7 @@ public class MainActivity extends AppCompatActivity implements Animation.Animati
         public void onClick(View v) {
 
             Log.v(TAG, "PlayAgainClickListener onclick Begin : " + v.getId() + ", complexity= " + complexity);
+            v.playSoundEffect(SoundEffectConstants.CLICK);
             toastText.setVisibility(View.INVISIBLE);
             toastText.clearAnimation();
 
@@ -412,6 +423,9 @@ public class MainActivity extends AppCompatActivity implements Animation.Animati
 
             Log.v(TAG, "PlayAgainClickListener onclick Begin : " + v.getId() +", complexity= "+complexity);
 
+            mTracker.setScreenName("MainActivityPlayAgain");
+            mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+
             TicTacToeApp app = (TicTacToeApp) getApplication();
             app.setMs(null);
             TicTacAbstractController ms = null;
@@ -440,7 +454,7 @@ public class MainActivity extends AppCompatActivity implements Animation.Animati
         public boolean onTouch(View view, MotionEvent motionEvent) {
 
             //initToast();
-
+            view.playSoundEffect(SoundEffectConstants.CLICK);
             Log.v(TAG, "MyTouchListener onTouch Begin : " + view.getId());
             if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
                 ClipData data = ClipData.newPlainText("", "");
@@ -577,8 +591,12 @@ public class MainActivity extends AppCompatActivity implements Animation.Animati
                 case DragEvent.ACTION_DROP:
                     // Dropped, reassign View to ViewGroup
 
+                    mTracker.setScreenName("MainActivityDropEvent");
+                    mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+
                     //initToast();
                     View view = (View) event.getLocalState();
+                    v.playSoundEffect(SoundEffectConstants.CLICK);
 
                     Log.v(TAG, "MyDragListener onDrag after ACTION_DROP : source : "+view.getId() +"  target : "+v.getId());
 
@@ -653,9 +671,7 @@ public class MainActivity extends AppCompatActivity implements Animation.Animati
 
                                             if (ms.tList.size() < 6) {
 
-                                                //int toNd = ms.predictUserinput("singleNd", ms.player);
-                                                ActionTakenBean userInput = ms.predictUserinput(ms.player);
-                                                int toNd = userInput.getToNd();
+                                                int toNd = ms.predictUserinput("singleNd", ms.player);
                                                 if (toNd == -1) {
                                                     toNd = ms.getRandomNum();
                                                 }
@@ -714,8 +730,31 @@ public class MainActivity extends AppCompatActivity implements Animation.Animati
     public void onGameCompleteEvent(TicTacAbstractController ms, View v)
     {
 
+        mTracker.setScreenName("MainActivityPlayerWin");
+        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+
+       /* mTracker.send(new HitBuilders.EventBuilder()
+                .setCategory("MainActivity")
+                .setAction("GameComplete")
+                .setLabel(ms.player)
+                .setValue(1)
+                .build());*/
+
         List<Animator> animations = new ArrayList<>();
-        toastText.setText(ms.player + " won the game !!!!");
+        String playerLbl = "";
+        if (ms.player!= null && ms.player.equals("Player1") )
+        {
+            playerLbl = player1LblName.getText().toString();
+        }
+        else if (ms.player!= null && ms.player.equals("Player2") )
+        {
+            playerLbl = player2LblName.getText().toString();
+        }
+        else{
+            playerLbl = "Player1";
+        }
+
+        toastText.setText(playerLbl + " won the game !!!!");
         toastText.setVisibility(View.VISIBLE);
         // start the animation
         toastText.startAnimation(animBlink);
@@ -800,7 +839,7 @@ public class MainActivity extends AppCompatActivity implements Animation.Animati
 
             setColor(aList, bList);
             if (isWonGame) {
-                setMessage(toast, layout, toastText, "Congratulations !! "+ms.player + " won the game.");
+               // setMessage(toast, layout, toastText, "Congratulations !! "+ms.player + " won the game.");
                 //startSuccessAnimation(ms.player, aList, bList);
                 onGameCompleteEvent(ms, v);
                 Log.v(TAG, ms.player + " WON THE GAME !!!!!!! before player1WinsCnt = " + player1WinsCnt + "  ,  player2WinsCnt = " + player2WinsCnt);

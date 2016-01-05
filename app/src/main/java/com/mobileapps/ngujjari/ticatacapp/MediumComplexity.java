@@ -53,7 +53,7 @@ public class MediumComplexity extends TicTacAbstractController{
     }
 
     @Override
-    public ActionTakenBean predictUserinput(String player)
+    public ActionTakenBean predictUserinput(String player) // Low Complex  Drag Drop
     {
         ActionTakenBean playerAction = new ActionTakenBean(player, null, null);
         setBoard();
@@ -69,9 +69,9 @@ public class MediumComplexity extends TicTacAbstractController{
     }
 
     @Override
-    public int predictUserinput(String inputType, String player) {
+    public int predictUserinput(String inputType, String player) { // Single Input
         setBoard();
-        bd.uptoDepth=2;
+        bd.uptoDepth=4;
         bd.alphaBetaMinimax(Integer.MIN_VALUE, Integer.MAX_VALUE, 0, 1);
         //bd.displayBoard();
         for (PointsAndScores pas : bd.rootsChildrenScore)

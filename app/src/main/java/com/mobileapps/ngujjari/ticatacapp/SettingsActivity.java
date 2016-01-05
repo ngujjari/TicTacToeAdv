@@ -1,6 +1,6 @@
 package com.mobileapps.ngujjari.ticatacapp;
 
-import android.annotation.TargetApi;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
@@ -16,6 +16,9 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toolbar;
+
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -36,6 +39,7 @@ public class SettingsActivity extends AppCompatActivity {
     private Button clearscoresbtn;
     private String complexity;
 
+    private Tracker mTracker;
 
    // @TargetApi(21)
     @Override
@@ -43,8 +47,10 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_options);
         SharedPreferences savedData = getSharedPreferences(PREFS_NAME, 0);
-        setToolBar();
-
+        //setToolBar();
+// Obtain the shared Tracker instance.
+        TicTacToeApp application = (TicTacToeApp) getApplication();
+        mTracker = application.getDefaultTracker();
 
         singleplaycheckBox = (CheckBox) findViewById(R.id.singleplaycheckBox);
         singleplaycheckBox.setOnClickListener(new PlayerCheckboxClickListener());
@@ -148,7 +154,7 @@ public class SettingsActivity extends AppCompatActivity {
     public void setToolBar()
     {
           android.support.v7.widget.Toolbar myToolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar_actionbar_settingspage);
-          myToolbar.setTitle("Tic Tac Toe - Advanced");
+          myToolbar.setTitle("Tic Tac Toe - Advanced"); // - Advanced or Ultimate
           setSupportActionBar(myToolbar);
 
     }
@@ -178,6 +184,11 @@ public class SettingsActivity extends AppCompatActivity {
     private final class StartGameBtnClickListener implements View.OnClickListener {
 
         public void onClick(View view) {
+
+            Log.i(TAG, "Setting screen Begin ");
+            mTracker.setScreenName("StartButtonClick");
+            mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+
             Log.v(TAG, " button id : " + view.getId());
             boolean singlePlayerChecked =  singleplaycheckBox.isChecked();
             boolean twoPlayerChecked =  twoplaycheckBox.isChecked();
@@ -217,24 +228,25 @@ public class SettingsActivity extends AppCompatActivity {
             complexity = null;
             Resources res = getResources();
             Drawable shape = res.getDrawable(R.drawable.buttoncomplexity);
+            Drawable shapeNoSelect = res.getDrawable(R.drawable.buttoncomplexity_noselect);
             //shape.applyTheme();
             if(view.getId() == R.id.lowbutton){
                 complexity = "LOW";
 
                 lowbutton.setBackground(shape);
-                midbutton.setBackground(null);
-                highbutton.setBackground(null);
+                midbutton.setBackground(shapeNoSelect);
+                highbutton.setBackground(shapeNoSelect);
             }
             else if (view.getId() == R.id.midbutton){
                 complexity = "MID";
-                lowbutton.setBackground(null);
+                lowbutton.setBackground(shapeNoSelect);
                 midbutton.setBackground(shape);
-                highbutton.setBackground(null);
+                highbutton.setBackground(shapeNoSelect);
             }
             else if(view.getId() == R.id.highbutton){
                 complexity = "HIGH";
-                lowbutton.setBackground(null);
-                midbutton.setBackground(null);
+                lowbutton.setBackground(shapeNoSelect);
+                midbutton.setBackground(shapeNoSelect);
                 highbutton.setBackground(shape);
             }
 
