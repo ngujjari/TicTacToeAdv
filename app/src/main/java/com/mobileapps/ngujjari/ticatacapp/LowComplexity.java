@@ -95,7 +95,7 @@ public class LowComplexity extends TicTacAbstractController{
     @Override
     public int predictUserinput(String inputType, String player) {  // Single Input
         setBoard();
-        bd.uptoDepth=4;
+        bd.uptoDepth=2;
         bd.alphaBetaMinimax(Integer.MIN_VALUE, Integer.MAX_VALUE, 0, 1);
         //bd.displayBoard();
         for (PointsAndScores pas : bd.rootsChildrenScore)

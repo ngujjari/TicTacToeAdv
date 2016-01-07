@@ -423,8 +423,8 @@ public class MainActivity extends AppCompatActivity implements Animation.Animati
 
             Log.v(TAG, "PlayAgainClickListener onclick Begin : " + v.getId() +", complexity= "+complexity);
 
-            mTracker.setScreenName("MainActivityPlayAgain");
-            mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+            //mTracker.setScreenName("MainActivityPlayAgain");
+            //mTracker.send(new HitBuilders.ScreenViewBuilder().build());
 
             TicTacToeApp app = (TicTacToeApp) getApplication();
             app.setMs(null);
@@ -454,7 +454,7 @@ public class MainActivity extends AppCompatActivity implements Animation.Animati
         public boolean onTouch(View view, MotionEvent motionEvent) {
 
             //initToast();
-            view.playSoundEffect(SoundEffectConstants.CLICK);
+
             Log.v(TAG, "MyTouchListener onTouch Begin : " + view.getId());
             if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
                 ClipData data = ClipData.newPlainText("", "");
@@ -477,6 +477,7 @@ public class MainActivity extends AppCompatActivity implements Animation.Animati
 
                 Log.v(TAG, " onTouch Begin  : " + ms.flipPlayer + "=  curr: " + ms.player + "  prev  = " + ms.previousPlayer + "  buttonVlu = " + buttonVlu);
                 if (!ms.player.equals("") && ms.tList.size() < 6) {
+                    view.playSoundEffect(SoundEffectConstants.CLICK);
                     boolean executeStep = ms.execute(Integer.parseInt(buttonVlu));
                     Log.v(TAG, " onTouch executeStep  : " + executeStep);
                     if (executeStep) {
@@ -520,6 +521,7 @@ public class MainActivity extends AppCompatActivity implements Animation.Animati
 
                 Log.v(TAG, " onTouch Begin  : " + ms.flipPlayer + "=  curr: " + ms.player + "  prev  = " + ms.previousPlayer + "  buttonVlu = " + buttonVlu);
                 if (!buttonVlu.startsWith("Player") && !ms.player.equals("")) {
+                    view.playSoundEffect(SoundEffectConstants.CLICK);
                     boolean executeStep = ms.execute(Integer.parseInt(buttonVlu));
                     Log.v(TAG, " onTouch executeStep  : " + executeStep);
                     if (executeStep) {
@@ -591,12 +593,12 @@ public class MainActivity extends AppCompatActivity implements Animation.Animati
                 case DragEvent.ACTION_DROP:
                     // Dropped, reassign View to ViewGroup
 
-                    mTracker.setScreenName("MainActivityDropEvent");
-                    mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+                    //mTracker.setScreenName("MainActivityDropEvent");
+                   // mTracker.send(new HitBuilders.ScreenViewBuilder().build());
 
                     //initToast();
                     View view = (View) event.getLocalState();
-                    v.playSoundEffect(SoundEffectConstants.CLICK);
+
 
                     Log.v(TAG, "MyDragListener onDrag after ACTION_DROP : source : "+view.getId() +"  target : "+v.getId());
 
@@ -618,8 +620,10 @@ public class MainActivity extends AppCompatActivity implements Animation.Animati
 
                         Log.v(TAG, " two player onDrag  Begin  : " + ms.flipPlayer + "=  curr: " + ms.player + "  prev  = " + ms.previousPlayer + "  fromButton = " + Integer.parseInt(fromButton) + " toBtn = " + Integer.parseInt(toButton) + "  ,ms.dragStatus = " + ms.dragStatus);
                         if (!ms.player.equals("") && ms.tList.size() == 6 && !fromButton.equals(toButton)) {
+
                             boolean executeStep = ms.execute(Integer.parseInt(fromButton), Integer.parseInt(toButton));
                             if (executeStep) {
+                                v.playSoundEffect(SoundEffectConstants.CLICK); // Play Sound
                                 boolean isWonGame = ms.isWon;
                                 if (isWonGame == false) {
                                     ms.player = (ms.player.equals("Player1") ? "Player2" : "Player1"); // Next step player
@@ -653,10 +657,12 @@ public class MainActivity extends AppCompatActivity implements Animation.Animati
 
                         ms.player = "Player1";
                         Log.v(TAG, "onDrag  Begin  : " + ms.flipPlayer + "=  curr: " + ms.player + "  prev  = " + ms.previousPlayer + "  fromButton = " + Integer.parseInt(fromButton) + " toBtn = " + Integer.parseInt(toButton) + "  ,ms.dragStatus = " + ms.dragStatus);
-                        if (ms.player.equals("Player1") && !fromButton.equals(toButton)) {
+                        if (ms.player.equals("Player1") && !fromButton.equals(toButton) && ms.tList.size() == 6) {
+
                             boolean executeStep = ms.execute(Integer.parseInt(fromButton), Integer.parseInt(toButton));
                             Log.v(TAG, "onDrag  executeStep  : " + executeStep);
                             if (executeStep) {
+                                v.playSoundEffect(SoundEffectConstants.CLICK); // Play Sound
                                // ms.previousPlayer = ms.player;
                                 // ms.player = buttonVlu;
                                 ms.flipPlayer = true;
@@ -721,7 +727,7 @@ public class MainActivity extends AppCompatActivity implements Animation.Animati
                 default:
                     break;
             }
-            Log.v(TAG, "MyDragListener onTouch end : " + v.getId() + "  action : " + action);
+            Log.v(TAG, "MyDragListener onDrag end : " + v.getId() + "  action : " + action);
             return true;
         }
     }
@@ -995,7 +1001,7 @@ public class MainActivity extends AppCompatActivity implements Animation.Animati
         Set<Integer> setA = new HashSet(Arrays.asList(TicTacAbstractController.nodes));
         for (Integer node : aList)
         {
-            Log.v(TAG, " A SetColor Node  " + node +" =  "+buttonMapRev.get(node+""));
+            //Log.v(TAG, " A SetColor Node  " + node +" =  "+buttonMapRev.get(node+""));
             ImageButton btnClick = (ImageButton) findViewById(buttonMapRev.get(node+""));
             Resources res = getResources();
             Matrix m = btnClick.getImageMatrix();
@@ -1019,7 +1025,7 @@ public class MainActivity extends AppCompatActivity implements Animation.Animati
         }
         for (Integer node : bList)
         {
-            Log.v(TAG, " B SetColor Node  " + node +" = "+buttonMapRev.get(node+""));
+            //Log.v(TAG, " B SetColor Node  " + node +" = "+buttonMapRev.get(node+""));
             /*Button btnClick = (Button) findViewById(buttonMapRev.get(node+""));
             btnClick.setBackgroundColor(Color.CYAN);*/
             ImageButton btnClick = (ImageButton) findViewById(buttonMapRev.get(node+""));

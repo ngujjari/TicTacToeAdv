@@ -146,7 +146,7 @@ public class Board implements Cloneable{
 
 	    
 	    public int alphaBetaMinimax(int alpha, int beta, int depth, int turn){
-	    	Log.v("Board","alpha = "+alpha+ " , beta = "+beta+" depth = "+depth +" turn = "+turn +" rootsChildrenScore = "+rootsChildrenScore.size());
+	    	//Log.v("Board","alpha = "+alpha+ " , beta = "+beta+" depth = "+depth +" turn = "+turn +" rootsChildrenScore = "+rootsChildrenScore.size());
 	        if(beta<=alpha){ 
 	        	//System.out.println("Pruning at depth = "+depth);
 	        	if(turn == 1) return Integer.MAX_VALUE; 
